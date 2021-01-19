@@ -7,9 +7,23 @@ const { queryToInsertDocument } = require("./queries/documents");
 // 1-10
 // 11-100
 // 101-500
+// 500-1684
+// 1685-2000
+// 2000-2100
+// 2101 - 46253
+// 46253 - 50000
+// 50,000 - 100,000
+// 100,000 - 200,000
+// 200,000 - 210,000
+// 210,000 - 250,000 
+// 250,000 - 300,000 
+// 300,000 - 301,400 
+// 301,400 - 400,000 
+/// 400,000 - 500,000 
+// 500,000 - 600,000
+// 600,000 - 700,000
 
-
-let counter = 500
+let counter = 700000
 const delay = interval => new Promise(resolve => setTimeout(resolve, interval))
 
 const getXLS = () => {
@@ -47,15 +61,16 @@ const getXLS = () => {
         await queryToInsertDocument(formattedDocument);
       }
 
-      console.log({ documentResults });
+      // console.log({ documentResults });
+      console.log('NEW RECORD INSERTED ==>')
     });
 };
 
 
 const runFetchDocsJob = async () => {
-  while (counter < 500){
+  while (counter < 800000){
     getXLS();
-    await delay(1000)
+    await delay(100)
     counter += 1
     
     console.log('COUNTER CURRENTLY AT ===>', counter)

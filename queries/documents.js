@@ -4,7 +4,7 @@ exports.queryToInsertDocument = (document) => {
   return db.none(
     `INSERT 
       INTO
-      documents (
+      cook_county_land_documents (
         doc_date,
         doc_type,
         doc_number,

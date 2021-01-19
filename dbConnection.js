@@ -17,9 +17,9 @@ const initOptions = {
   },
   // this is to be commited for debugging purposes, but left commented out until you need it
   // if un-commented, it will print out the resulting query when any query is ran
-  query(e) {
-    console.log(e.query);
-  },
+  // query(e) {
+  //   console.log(e.query);
+  // },
 };
 const pgp = require('pg-promise')(initOptions);
 
