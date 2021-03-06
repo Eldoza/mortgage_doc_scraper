@@ -1,9 +1,8 @@
 const xlsx = require("node-xlsx");
 const axios = require("axios");
-const fs = require("fs");
 const { queryToInsertDocument } = require("./queries/documents");
 
-// PIN 1083852 already in DB 
+// PIN 1,083,852 already in DB
 // 1-10
 // 11-100
 // 101-500
@@ -15,16 +14,24 @@ const { queryToInsertDocument } = require("./queries/documents");
 // 50,000 - 100,000
 // 100,000 - 200,000
 // 200,000 - 210,000
-// 210,000 - 250,000 
-// 250,000 - 300,000 
-// 300,000 - 301,400 
-// 301,400 - 400,000 
-/// 400,000 - 500,000 
-// 500,000 - 600,000
+// 210,000 - 250,000
+// 250,000 - 300,000
+// 300,000 - 301,400
+// 301,400 - 400,000
+/// 400,000 - 500,000
+// 500,000 - 600,0003
 // 600,000 - 700,000
+// 700,000 - 800,000 -- HERE
+// 800,000 - 894,300
+// 894,300 - 900,000
+// 900,000 - 1,308,252
+// 1400000 - 2000000
+// 2000000 - 2250000
+// 2250000
 
-let counter = 700000
-const delay = interval => new Promise(resolve => setTimeout(resolve, interval))
+let counter = 2250000;
+const delay = (interval) =>
+  new Promise((resolve) => setTimeout(resolve, interval));
 
 const getXLS = () => {
   return axios
@@ -61,20 +68,19 @@ const getXLS = () => {
         await queryToInsertDocument(formattedDocument);
       }
 
-      // console.log({ documentResults });
-      console.log('NEW RECORD INSERTED ==>')
-    });
+      console.log("NEW RECORD INSERTED ==>");
+    })
+    .then((error) => console.log("ERROR =====>", error));
 };
 
-
 const runFetchDocsJob = async () => {
-  while (counter < 800000){
+  while (counter < 2500000) {
     getXLS();
-    await delay(100)
-    counter += 1
-    
-    console.log('COUNTER CURRENTLY AT ===>', counter)
-  }
-}
+    await delay(100);
+    counter += 1;
 
-runFetchDocsJob()
+    console.log("COUNTER CURRENTLY AT ===>", counter);
+  }
+};
+
+runFetchDocsJob();
